@@ -73,11 +73,10 @@ describe('AsyncResult', () => {
     }
 
     const failureResult = await asyncFailure();
+
     expect(Result.isFailure(failureResult)).toBe(true);
     if (Result.isFailure(failureResult)) {
       expect(failureResult.errors[0]).toEqual({ type: 'async_error', message: 'Async operation failed' });
-    } else {
-      throw new Error('Expected failure result');
     }
   });
 });
