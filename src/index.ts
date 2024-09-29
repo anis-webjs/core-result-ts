@@ -32,13 +32,13 @@ const Result = {
       value,
       kind: 'success',
     }) as SuccessResult<TSuccess>,
-  failure: <TFailure extends Failure[]>(
-    ...errors: TFailure
-  ): FailureResult<TFailure> =>
+  failure: <TFailures extends Failure[]>(
+    ...errors: TFailures
+  ): FailureResult<TFailures> =>
     ({
       errors,
       kind: 'failure',
-    }) as FailureResult<TFailure>,
+    }) as FailureResult<TFailures>,
 };
 
 type AsyncResult<TFailure extends Failure, TSuccess> = Promise<
