@@ -1,6 +1,6 @@
 {
   "name": "@anis-webjs/core-result-ts",
-  "version": "0.0.1-alpha.7",
+  "version": "0.0.1-alpha.8",
   "description": "Result Pattern",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
