@@ -1,8 +1,7 @@
-import { Result } from ".";
+import { Failure } from "./failure";
+import { Result } from "./result";
 
 type UnknownFunction = (...params: unknown[]) => unknown;
-
-type Failure = { type: string; message: string };
 
 export function pipeResult<A extends unknown[], B, C, FB extends Failure, FC extends Failure>(
     ab: (this: void, ...a: A) => Result<FB, B>,

@@ -1,6 +1,6 @@
 {
   "name": "@anis-webjs/core-result-ts",
-  "version": "0.0.1-alpha.5",
+  "version": "0.0.1-alpha.6",
   "description": "Result Pattern",
   "main": "src/index.ts",
   "keywords": [],
@@ -9,6 +9,11 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:anis-webjs/core-result-ts.git"
+  },
+  "exports": {
+    "./pipe": "./src/pipe.ts",
+    "./pipe-async": "./src/pipe-async.ts",
+    "./result": "./src/result.ts"
   },
   "bugs": {
     "url": "https://github.com/anis-webjs/core-result-ts/issues"

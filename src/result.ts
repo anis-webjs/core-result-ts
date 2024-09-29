@@ -1,3 +1,5 @@
+import { Failure } from "./failure";
+
 declare const __brand__: unique symbol;
 
 type Brand<T, B> = T & { readonly [__brand__]: B };
@@ -6,8 +8,6 @@ type SuccessResult<TSuccess> = Brand<
   Readonly<{ kind: 'success'; value: TSuccess }>,
   'SuccessResult'
 >;
-
-type Failure = { type: string; message: string };
 
 export type FailureResult<TFailures extends Failure[]> = Brand<
   Readonly<{ kind: 'failure'; errors: TFailures }>,

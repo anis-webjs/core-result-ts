@@ -1,8 +1,7 @@
-import { Result, AsyncResult } from ".";
+import { Failure } from "./failure";
+import { Result, AsyncResult } from "./result";
 
 type UnknownAsyncFunction = (...params: unknown[]) => Promise<unknown>;
-
-type Failure = { type: string; message: string };
 
 export function pipeAsyncResult<A extends unknown[], B, C, FB extends Failure, FC extends Failure>(
     ab: (this: void, ...a: A) => AsyncResult<FB, B>,
