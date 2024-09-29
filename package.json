@@ -1,8 +1,9 @@
 {
   "name": "@anis-webjs/core-result-ts",
-  "version": "0.0.1-alpha.6",
+  "version": "0.0.1-alpha.7",
   "description": "Result Pattern",
-  "main": "src/index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -11,9 +12,9 @@
     "url": "git@github.com:anis-webjs/core-result-ts.git"
   },
   "exports": {
-    "./pipe": "./src/pipe.ts",
-    "./pipe-async": "./src/pipe-async.ts",
-    "./result": "./src/result.ts"
+    "./pipe": "./dist/pipe.js",
+    "./pipe-async": "./dist/pipe-async.js",
+    "./result": "./dist/result.js"
   },
   "bugs": {
     "url": "https://github.com/anis-webjs/core-result-ts/issues"
@@ -21,22 +22,16 @@
   "homepage": "https://github.com/anis-webjs/core-result-ts#readme",
   "devDependencies": {
     "typescript": "^4.5.0",
-    "vitest": "^2.1.1",
-    "@semantic-release/changelog": "^5.0.1",
-    "@semantic-release/git": "^9.0.0",
-    "@semantic-release/github": "^7.0.2",
-    "semantic-release": "^17.0.0"
+    "vitest": "^2.1.1"
   },
   "files": [
     "dist",
     "README.md"
   ],
-  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build",
-    "test": "vitest run",
-    "semantic-release": "semantic-release"
+    "test": "vitest run"
   },
   "release": {
     "branches": ["main", "alpha"]
