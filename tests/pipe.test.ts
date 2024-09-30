@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Result, pipeResult } from '../src';
+import { Result } from '../src';
 
 describe('pipeResult', () => {
   it('should pipe successful results', () => {
@@ -7,7 +7,7 @@ describe('pipeResult', () => {
     const double = (x: number): Result<never, number> => Result.success(x * 2);
     const toString = (x: number): Result<never, string> => Result.success(x.toString());
 
-    const piped = pipeResult(addOne, double, toString);
+    const piped = Result.pipe(addOne, double, toString);
     const result = piped(5);
 
     expect(Result.isSuccess(result)).toBe(true);
@@ -22,7 +22,7 @@ describe('pipeResult', () => {
     const double = (x: number): Result<{ type: 'DOUBLE_ERROR', message: string }, number> => Result.success(x * 2);
     const toString = (x: number): Result<{ type: 'TO_STRING_ERROR', message: string }, string> => Result.success(x.toString());
 
-    const piped = pipeResult(addOne, double, toString);
+    const piped = Result.pipe(addOne, double, toString);
     const result = piped(-5);
 
     expect(Result.isFailure(result)).toBe(true);
@@ -35,7 +35,7 @@ describe('pipeResult', () => {
     const add = (x: number, y: number): Result<never, number> => Result.success(x + y);
     const double = (x: number): Result<never, number> => Result.success(x * 2);
 
-    const piped = pipeResult(add, double);
+    const piped = Result.pipe(add, double);
     const result = piped(3, 4);
 
     expect(Result.isSuccess(result)).toBe(true);

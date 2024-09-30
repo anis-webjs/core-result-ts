@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { pipeAsyncResult, Result } from "../src";
+import { Result } from "../src";
 
 describe('pipeAsyncResult', () => {
   it('should pipe successful results', async () => {
@@ -7,7 +7,7 @@ describe('pipeAsyncResult', () => {
     const double = async (x: number): Promise<Result<never, number>> => Result.success(x * 2);
     const toString = async (x: number): Promise<Result<never, string>> => Result.success(x.toString());
 
-    const piped = pipeAsyncResult(addOne, double, toString);
+    const piped = Result.pipeAsync(addOne, double, toString);
 
     const result = await piped(5);
 
@@ -23,7 +23,7 @@ describe('pipeAsyncResult', () => {
     const double = async (x: number): Promise<Result<{ type: 'DOUBLE_ERROR', message: string }, number>> => Result.success(x * 2);
     const toString = async (x: number): Promise<Result<{ type: 'TO_STRING_ERROR', message: string }, string>> => Result.success(x.toString());
 
-    const piped = pipeAsyncResult(addOne, double, toString);
+    const piped = Result.pipeAsync(addOne, double, toString);
     const result = await piped(-5);
 
     expect(Result.isFailure(result)).toBe(true);
@@ -38,7 +38,7 @@ describe('pipeAsyncResult', () => {
     const double = async (x: number): Promise<Result<{ type: 'DOUBLE_ERROR', message: string }, number>> => Result.success(x * 2);
     const toString = async (x: number): Promise<Result<{ type: 'TO_STRING_ERROR', message: string }, string>> => Result.success(x.toString());
 
-    const piped = pipeAsyncResult(addOne, double, toString);
+    const piped = Result.pipeAsync(addOne, double, toString);
     const result = await piped(5, 2);
 
     expect(Result.isSuccess(result)).toBe(true);

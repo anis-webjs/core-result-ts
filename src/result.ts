@@ -1,4 +1,6 @@
 import { Failure } from "./failure";
+import { pipeResult } from "./pipe";
+import { pipeAsyncResult } from "./pipe-async";
 
 declare const __brand__: unique symbol;
 
@@ -39,6 +41,8 @@ const Result = {
       errors,
       kind: 'failure',
     }) as FailureResult<TFailures>,
+    pipe: pipeResult,
+    pipeAsync: pipeAsyncResult,
 };
 
 type AsyncResult<TFailure extends Failure, TSuccess> = Promise<
